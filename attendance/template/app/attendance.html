@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attendance</title>
+    <link rel="stylesheet" href="{% static 'app/attend.css' %}?v=2">
+</head>
+<body>
+    <div class="division">
+        <h1 style="font-family: 'Times New Roman', Times, serif;">Attendance Form</h1>
+        <form action="" method="POST" >
+            {% csrf_token%}
+            <table cellpadding="10px">
+                <tr>
+                    <th>Staff Id</th>
+                    <td><input type="text" class="one" name="no" required></td>
+                </tr>
+               
+                <tr>
+                    <th>Date</th>
+                    <td><input type="text" name="d" value="{{today}}" class="one" disabled></td>
+                </tr>
+               
+                <tr>
+                    <th>Punch In</th>
+                    <th>Punch Out</th>
+                </tr> 
+                <tr> <div >
+                    <th><input type="radio" name="mode" value="in" required></th>
+                    <th style="text-align: center;"><input type="radio" name="mode" value="out" required></th>
+                    </div>
+                </tr>
+                <tr>
+                    <th>Time</th>
+                    <td><input type="text" name="t" value="{{now_time}}" class="one" disabled></td></tr>
+            </table>
+        
+         <button>Submit</button>
+         </form>
+         {% if message %}
+            <p >{{ message }}</p>
+        {% endif %}
+    </div>
+     
+</body>
+</html>
